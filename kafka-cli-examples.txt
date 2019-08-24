@@ -1,0 +1,77 @@
+# Kafka Topics CLI
+
+kafka-topics
+kafka-topics --zookeeper 127.0.0.1:2181
+kafka-topics --zookeeper localhost:2181
+kafka-topics --bootstrap-server localhost:9092
+kafka-topics --zookeeper 127.0.0.1:2181 --topic first_topic --create --partitions 3 --replication-factor 1
+
+kafka-topics --zookeeper localhost:2181 --list
+kafka-topics --zookeeper localhost:2181 --topic first_topic --describe
+
+kafka-topics --zookeeper 127.0.0.1:2181 --topic second_topic --create --partitions 3 --replication-factor 1
+kafka-topics --zookeeper 127.0.0.1:2181 --topic second_topic --delete
+
+---
+
+# Kafka Console Producer CLI
+
+kafka-console-producer
+kafka-console-producer --broker-list localhost:9092 --topic first_topic
+kafka-console-producer --broker-list localhost:9092 --topic first_topic --producer-property acks=all
+
+- note: producing to a topic that doesn't exist will create a new topic (better to create beforehand)
+
+---
+
+# Kafka Console Consumer CLI
+
+kafka-console-consumer
+kafka-console-consumer --bootstrap-server localhost:9092 --topic first_topic
+kafka-console-consumer --bootstrap-server localhost:9092 --topic first_topic --from-beginning
+
+---
+
+# Kafka Consumer in Group
+
+kafka-console-consumer --bootstrap-server localhost:9092 --topic first_topic --group my-first-application
+- note: can run this multiple times to add multiple consumer to the group.
+kafka-console-consumer --bootstrap-server localhost:9092 --topic first_topic --group my-second-application --from-beginning
+
+---
+
+# Kafka Consumer Groups CLI
+
+kafka-consumer-groups
+kafka-consumer-groups --bootstrap-server localhost:9092 --list
+kafka-consumer-groups --bootstrap-server localhost:9092 --describe --group my-first-application
+
+---
+
+# Resetting Offsets
+
+kafka-consumer-groups --bootstrap-server localhost:9092 --topic first_topic --group my-first-application --reset-offsets --to-earliest
+kafka-consumer-groups --bootstrap-server localhost:9092 --topic first_topic --group my-first-application --reset-offsets --to-earliest --execute
+kafka-consumer-groups --bootstrap-server localhost:9092 --topic first_topic --group my-first-application --reset-offsets --shift-by 2
+kafka-consumer-groups --bootstrap-server localhost:9092 --topic first_topic --group my-first-application --reset-offsets --shift-by -2
+
+---
+
+# Producer with keys
+
+kafka-console-producer --broker-list 127.0.0.1:9092 --topic first_topic --property parse.key=true --property key.separator=,
+> key,value
+> another key,another value
+
+# Consumer with keys
+
+kafka-console-consumer --bootstrap-server 127.0.0.1:9092 --topic first_topic --from-beginning --property print.key=true --property key.separator=,
+
+---
+
+# Tools
+
+https://github.com/yahoo/kafka-manager
+http://kafkatool.com/
+https://github.com/edenhill/kafkacat
+https://medium.com/@coderunner/debugging-with-kafkacat-df7851d21968
