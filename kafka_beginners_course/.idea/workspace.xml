@@ -28,11 +28,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/github/johnschoeman/kafka/tutorial1/ConsumerDemoGroups.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
               <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/johnschoeman/kafka/tutorial1/ConsumerDemoWithThread.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="54" column="16" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
+              <folding>
+                <element signature="e#663#664#0" expanded="true" />
+                <element signature="e#706#707#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -63,6 +76,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/github/johnschoeman/kafka/tutorial1/ProducerDemoKeys.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/johnschoeman/kafka/tutorial1/ConsumerDemo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/johnschoeman/kafka/tutorial1/ConsumerDemoGroups.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/johnschoeman/kafka/tutorial1/ConsumerDemoWithThread.java" />
       </list>
     </option>
   </component>
@@ -152,7 +166,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ProducerDemoKeys">
+  <component name="RunManager" selected="Application.ConsumerDemoWithThread">
     <configuration name="ConsumerDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.github.johnschoeman.kafka.tutorial1.ConsumerDemo" />
       <module name="kafka_beginners_course" />
@@ -179,8 +193,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProducerDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.github.johnschoeman.kafka.tutorial1.ProducerDemo" />
+    <configuration name="ConsumerDemoWithThread" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.github.johnschoeman.kafka.tutorial1.ConsumerDemoWithThread" />
       <module name="kafka_beginners_course" />
       <extension name="coverage">
         <pattern>
@@ -221,17 +235,17 @@
     <list>
       <item itemvalue="Application.ConsumerDemo" />
       <item itemvalue="Application.ConsumerDemoGroups" />
-      <item itemvalue="Application.ProducerDemo" />
       <item itemvalue="Application.ProducerDemoKeys" />
       <item itemvalue="Application.ProducerDemoWithCallback" />
+      <item itemvalue="Application.ConsumerDemoWithThread" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ConsumerDemoWithThread" />
         <item itemvalue="Application.ProducerDemoKeys" />
         <item itemvalue="Application.ConsumerDemoGroups" />
         <item itemvalue="Application.ConsumerDemo" />
         <item itemvalue="Application.ProducerDemoWithCallback" />
-        <item itemvalue="Application.ProducerDemo" />
       </list>
     </recent_temporary>
   </component>
@@ -259,6 +273,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info id="Image Layers" />
@@ -266,7 +281,7 @@
       <window_info id="UI Designer" />
       <window_info id="Capture Tool" />
       <window_info id="Learn" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Terminal" />
@@ -274,7 +289,7 @@
       <window_info anchor="bottom" id="Messages" weight="0.3299363" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3299363" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3299363" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -357,9 +372,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/johnschoeman/kafka/tutorial1/ConsumerDemoWithThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="54" column="16" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
+          <folding>
+            <element signature="e#663#664#0" expanded="true" />
+            <element signature="e#706#707#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="masterDetails">
     <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
           <last-edited>scala-sdk-2.12.8</last-edited>
@@ -375,6 +424,17 @@
       <state key="JdkListConfigurable.UI">
         <settings>
           <last-edited>12</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
           <splitter-proportions>
             <option name="proportions">
               <list>
