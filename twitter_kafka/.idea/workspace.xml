@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6f12b0be-258e-4a30-aa20-31442fc6e466" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../kafka_beginners_course/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../kafka_beginners_course/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kafka_beginners_course/src/main/java/com/github/johnschoeman/kafka/tutorial1/ConsumerDemoWithThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kafka_beginners_course/src/main/java/com/github/johnschoeman/kafka/tutorial1/ConsumerDemoWithThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/TwitterProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/johnschoeman/kafka_twitter/TwitterProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/johnschoeman/kafka_twitter/TwitterProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/johnschoeman/kafka_twitter/TwitterProducer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -34,12 +31,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/github/johnschoeman/kafka_twitter/TwitterProducer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="133" column="43" lean-forward="true" selection-start-line="133" selection-start-column="43" selection-end-line="133" selection-end-column="43" />
+            <state relative-caret-position="480">
+              <caret line="123" column="18" selection-start-line="123" selection-start-column="18" selection-end-line="123" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1234#1235#0" expanded="true" />
-                <element signature="e#5662#5678#0" expanded="true" />
+                <element signature="e#1061#1062#0" expanded="true" />
+                <element signature="e#1663#1671#0" expanded="true" />
+                <element signature="e#2823#2839#0" expanded="true" />
+                <element signature="e#3229#3245#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -280,12 +279,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/johnschoeman/kafka_twitter/TwitterProducer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="133" column="43" lean-forward="true" selection-start-line="133" selection-start-column="43" selection-end-line="133" selection-end-column="43" />
+        <state relative-caret-position="480">
+          <caret line="123" column="18" selection-start-line="123" selection-start-column="18" selection-end-line="123" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1234#1235#0" expanded="true" />
-            <element signature="e#5662#5678#0" expanded="true" />
+            <element signature="e#1061#1062#0" expanded="true" />
+            <element signature="e#1663#1671#0" expanded="true" />
+            <element signature="e#2823#2839#0" expanded="true" />
+            <element signature="e#3229#3245#0" expanded="true" />
           </folding>
         </state>
       </provider>
