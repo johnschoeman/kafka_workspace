@@ -40,7 +40,7 @@ public class TwitterProducer {
 
         /** Set up your blocking queues: Be sure to size these properly based on expected TPS of your stream */
         LinkedBlockingQueue<String> msgQueue = new LinkedBlockingQueue<String>(100000);
-        List<String> terms = Lists.newArrayList("twitter", "api", "kafka", "thoughtbot", "bitcoin", "usa", "politics", "sport");
+        List<String> terms = Lists.newArrayList("scala", "kafka");
         Client client = createTwitterClient(msgQueue, terms);
 
         // add shutdown hook
