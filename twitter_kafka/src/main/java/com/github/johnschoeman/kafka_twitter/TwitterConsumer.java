@@ -1,5 +1,6 @@
 package com.github.johnschoeman.kafka_twitter;
 
+import com.google.gson.JsonParser;
 import org.apache.http.HttpHost;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -13,14 +14,11 @@ import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.xcontent.XContentType;
-import org.json.JSONObject;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
 
 public class TwitterConsumer {
@@ -44,7 +42,6 @@ public class TwitterConsumer {
         RestHighLevelClient client = createElasticSearchClient();
         ActionListener<IndexResponse> listener = createActionListener();
 
-
         // add shutdown hook
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             logger.info("stopping application...");
@@ -59,13 +56,35 @@ public class TwitterConsumer {
 
         while(true) {
             ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
+            logger.info("Received " + records.count() + " records");
 
             for(ConsumerRecord<String, String> record : records) {
-                String jsonString = record.value();
+                // 2 strategies for idempotent ids:
+                // kafka generic id
+                // String id = record.topic() + "_" + record.partition() + "_" + record.offset();
 
-                IndexRequest indexRequest = new IndexRequest("tweets").source(jsonString, XContentType.JSON);
+                // twitter feed id
+                String id = extractIdFromTweet(record.value());
 
-                client.indexAsync(indexRequest, RequestOptions.DEFAULT, listener);
+                IndexRequest indexRequest = new IndexRequest("tweets")
+                        .id(id)
+                        .source(record.value(), XContentType.JSON);
+
+                IndexResponse indexResponse = client.index(indexRequest, RequestOptions.DEFAULT);
+                logger.info(indexResponse.getId());
+                try {
+                    Thread.sleep(2);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            logger.info("Committing offsets...");
+            consumer.commitSync();
+            logger.info("Offsets have been committed");
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }
@@ -77,6 +96,8 @@ public class TwitterConsumer {
         properties.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         properties.setProperty(ConsumerConfig.GROUP_ID_CONFIG, groupId);
         properties.setProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+        properties.setProperty(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "false"); // disable auto commit of offsets
+        properties.setProperty(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, "10");
 
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(properties);
         consumer.subscribe(Arrays.asList(topic));
@@ -93,18 +114,16 @@ public class TwitterConsumer {
         return client;
     }
 
-    public ActionListener<IndexResponse> createActionListener() {
-        org.slf4j.Logger logger = LoggerFactory.getLogger(TwitterProducer.class.getName());
-        ActionListener<IndexResponse> listener = new ActionListener<IndexResponse>() {
-            @Override
-            public void onResponse(IndexResponse indexResponse) {
-                logger.info(indexResponse.getId());
-            }
-
-            public void onFailure(Exception e) {
-                logger.error("failed to send request", e);
-            }
-        };
-        return listener;
+    private static JsonParser jsonParser = new JsonParser();
+    private static String extractIdFromTweet(String tweetJson) {
+        // gson library
+        try {
+            return jsonParser.parse(tweetJson)
+                    .getAsJsonObject()
+                    .get("id_str")
+                    .getAsString();
+        } catch (NullPointerException e) {
+            return "2";
+        }
     }
 }
